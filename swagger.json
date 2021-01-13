@@ -1,0 +1,151 @@
+{
+  "openapi" : "3.0.0",
+  "info" : {
+    "version" : "1",
+    "title" : "Band API",
+    "description" : "API of Bands"
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/JonasT3000/Band/1"
+  } ],
+  "paths" : {
+    "/Tracks" : {
+      "post" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Legt eine Band an",
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/Track"
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created"
+          }
+        }
+      },
+      "get" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Liste der Bands",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/TrackItem"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Tracks/{trackid}" : {
+      "parameters" : [ {
+        "$ref" : "#/components/parameters/trackid"
+      } ],
+      "get" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Liefert eine Band",
+        "responses" : {
+          "200" : {
+            "$ref" : "#/components/responses/Track"
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Ändert eine Band",
+        "requestBody" : {
+          "$ref" : "#/components/requestBodies/Track"
+        },
+        "responses" : {
+          "200" : {
+            "$ref" : "#/components/responses/Track"
+          }
+        }
+      },
+      "delete" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Löscht eine Band",
+        "responses" : {
+          "200" : {
+            "description" : "OK"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "parameters" : {
+      "trackid" : {
+        "name" : "trackid",
+        "in" : "path",
+        "required" : true,
+        "schema" : {
+          "type" : "integer"
+        },
+        "description" : "ID des Tracks"
+      }
+    },
+    "responses" : {
+      "Track" : {
+        "description" : "OK",
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Track"
+            }
+          }
+        }
+      }
+    },
+    "requestBodies" : {
+      "Track" : {
+        "content" : {
+          "application/json" : {
+            "schema" : {
+              "$ref" : "#/components/schemas/Track"
+            }
+          }
+        }
+      }
+    },
+    "schemas" : {
+      "Track" : {
+        "type" : "object",
+        "properties" : {
+          "band" : {
+            "type" : "string",
+            "maxLength" : 20,
+            "example" : "Metallica"
+          },
+          "title" : {
+            "type" : "string",
+            "maxLength" : 20,
+            "example" : "Master of Puppets"
+          }
+        }
+      },
+      "TrackItem" : {
+        "type" : "object",
+        "properties" : {
+          "title" : {
+            "type" : "string"
+          },
+          "self_uri" : {
+            "type" : "string",
+            "format" : "uri"
+          }
+        },
+        "example" : {
+          "title" : "Nothing Else Matters",
+          "self_uri" : "/Tracks/36"
+        }
+      }
+    }
+  }
+}
