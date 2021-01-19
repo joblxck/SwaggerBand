@@ -1,0 +1,56 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Band API",
+    "description" : "API of Bands",
+    "version" : "1.0"
+  },
+  "servers" : [ {
+    "url" : "https://virtserver.swaggerhub.com/JonasT3000/Band/1",
+    "description" : "SwaggerHub API Auto Mocking",
+    "variables" : { }
+  } ],
+  "paths" : {
+    "/Tracks" : {
+      "post" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Legt eine Band an",
+        "operationId" : "createTrack",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/Track"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "201" : {
+            "description" : "Created!"
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "Track" : {
+        "type" : "object",
+        "properties" : {
+          "band" : {
+            "maximum" : 20,
+            "type" : "string",
+            "example" : "Metallica"
+          },
+          "title" : {
+            "maximum" : 20,
+            "type" : "string",
+            "example" : "Master of Puppets"
+          }
+        },
+        "description" : "Track with Band and Title"
+      }
+    }
+  }
+}
