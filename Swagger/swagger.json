@@ -12,6 +12,26 @@
   } ],
   "paths" : {
     "/Tracks" : {
+      "get" : {
+        "tags" : [ "Bands" ],
+        "summary" : "Liste aller Bands",
+        "operationId" : "getTracks",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/Track"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "post" : {
         "tags" : [ "Bands" ],
         "summary" : "Legt eine Band an",
@@ -20,14 +40,21 @@
           "content" : {
             "application/json" : {
               "schema" : {
-                "$ref" : "#/components/schemas/Track"
+                "$ref" : "#/components/schemas/TrackItem"
               }
             }
           }
         },
         "responses" : {
           "201" : {
-            "description" : "Created!"
+            "description" : "Created!",
+            "content" : {
+              "text/plain" : {
+                "schema" : {
+                  "type" : "string"
+                }
+              }
+            }
           }
         }
       }
@@ -35,6 +62,33 @@
   },
   "components" : {
     "schemas" : {
+      "TrackItem" : {
+        "type" : "object",
+        "properties" : {
+          "band" : {
+            "maximum" : 20,
+            "type" : "string",
+            "example" : "Rammstein"
+          },
+          "title" : {
+            "maximum" : 20,
+            "type" : "string",
+            "example" : "Engel"
+          },
+          "time" : {
+            "maximum" : 6,
+            "minimum" : 6,
+            "type" : "string",
+            "example" : "04m26s"
+          },
+          "genre" : {
+            "maximum" : 20,
+            "type" : "string",
+            "example" : "Metal"
+          }
+        },
+        "description" : "More infos about a Track"
+      },
       "Track" : {
         "type" : "object",
         "properties" : {
