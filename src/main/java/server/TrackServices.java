@@ -11,6 +11,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
@@ -46,7 +47,7 @@ public class TrackServices
     @Produces(MediaType.TEXT_PLAIN)
     @Operation(tags = {"Bands"}, summary = "Legt eine Band an", responses = @ApiResponse(responseCode = "201",
             description = "Created!", content = @Content(mediaType = MediaType.TEXT_PLAIN,
-            schema = @Schema(implementation = String.class))))
+            schema = @Schema(implementation = String.class), examples = {@ExampleObject(value = "BlaBla") })))
     public Response createTrack(TrackItem track)
     {
         String result = "Created track: " + track.getBand() + ", " + track.getTitle();
