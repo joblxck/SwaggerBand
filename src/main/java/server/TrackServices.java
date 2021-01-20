@@ -28,9 +28,9 @@ import javax.ws.rs.core.Response.Status;
 
 @OpenAPIDefinition(
         info = @Info(
-                title = "Band API",
+                title = "Track API",
                 version = "1.0",
-                description = "API of Bands"
+                description = "API of Tracks"
         ),
         servers = {
                 @Server(
@@ -45,7 +45,7 @@ public class TrackServices
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.TEXT_PLAIN)
-    @Operation(tags = {"Bands"}, summary = "Legt eine Band an", responses = @ApiResponse(responseCode = "201",
+    @Operation(tags = {"Tracks"}, summary = "Legt einen Track an", responses = @ApiResponse(responseCode = "201",
             description = "Created!", content = @Content(mediaType = MediaType.TEXT_PLAIN,
             schema = @Schema(implementation = String.class), examples = {@ExampleObject(value = "Created track: Rammstein, Engel") })))
     public Response createTrack(TrackItem track)
@@ -57,7 +57,7 @@ public class TrackServices
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Operation(tags = {"Bands"}, summary = "Liste aller Bands", responses = @ApiResponse(responseCode = "200",
+    @Operation(tags = {"Tracks"}, summary = "Liste aller Tracks", responses = @ApiResponse(responseCode = "200",
             description = "OK", content = @Content(mediaType = MediaType.APPLICATION_JSON,
             array = @ArraySchema(schema = @Schema(implementation = Track.class)))))
     public List<Track> getTracks()
