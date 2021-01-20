@@ -52,7 +52,7 @@ public class TrackServices
     {
         String result = "Created track: " + track.getBand() + ", " + track.getTitle();
 
-        return Response.status(Status.OK).entity(result).build();
+        return Response.status(Status.CREATED).entity(result).build();
     }
 
     @GET
