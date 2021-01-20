@@ -53,7 +53,7 @@
                 "schema" : {
                   "type" : "string"
                 },
-                "example" : "BlaBla"
+                "example" : "Created track: Rammstein, Engel"
               }
             }
           }

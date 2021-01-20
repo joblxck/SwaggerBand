@@ -47,7 +47,7 @@ public class TrackServices
     @Produces(MediaType.TEXT_PLAIN)
     @Operation(tags = {"Bands"}, summary = "Legt eine Band an", responses = @ApiResponse(responseCode = "201",
             description = "Created!", content = @Content(mediaType = MediaType.TEXT_PLAIN,
-            schema = @Schema(implementation = String.class), examples = {@ExampleObject(value = "BlaBla") })))
+            schema = @Schema(implementation = String.class), examples = {@ExampleObject(value = "Created track: Rammstein, Engel") })))
     public Response createTrack(TrackItem track)
     {
         String result = "Created track: " + track.getBand() + ", " + track.getTitle();
